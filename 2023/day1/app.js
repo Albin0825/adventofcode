@@ -3,17 +3,23 @@ addEventListener('load', async () => {
     funPart2(data[0]);
 });
 
+
+
+sum = 0;
+
+
+
 function funPart1(data) {
-	sum = 0;
 	data.forEach(element => {
 		allNumbers = element.match(/\d/g);
 		sum += (allNumbers[0] + allNumbers[allNumbers.length-1]) * 1;
 	});
-	console.log(sum)
+
+    
+	console.log('sum', sum)
 }
 
 function funPart2(data) {
-	sum = 0;
 	const wordsToDigits = {
         'one': '1',
         'two': '2',
@@ -36,16 +42,18 @@ function funPart2(data) {
     };
 
 	
-
 	data.forEach(element => {
 		allNumbers = {};
 		Object.keys(wordsToDigits).forEach(e => {
-			allNumbers[element.indexOf(e)] = wordsToDigits[e]
-			allNumbers[element.lastIndexOf(e)] = wordsToDigits[e]
-		})
+			allNumbers[element.indexOf(e)] = wordsToDigits[e];
+			allNumbers[element.lastIndexOf(e)] = wordsToDigits[e];
+		});
 		delete allNumbers['-1'];
-		allNumbersKeys = Object.keys(allNumbers)
+
+		allNumbersKeys = Object.keys(allNumbers);
 		sum += (allNumbers[allNumbersKeys[0]] + allNumbers[allNumbersKeys[allNumbersKeys.length-1]]) * 1;
 	});
-	console.log(sum)
+
+
+	console.log('sum', sum)
 }
